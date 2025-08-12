@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>my Portfolio</title>
+    <style>
+        /* Make page fill the screen */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+            color: white;
+        }
+
+        /* Canvas as the animated background */
+        #bgCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, #261345, #2d1950);
+        }
+
+        /* Responsive Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 0;
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #1f1070;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 4rem;
+        }
+
+        .nav-item a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-item a:hover {
+            color: #00d4ff;
+        }
+
+        .nav-item a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #00d4ff;
+            transition: width 0.3s ease;
+        }
+
+        .nav-item a:hover::after {
+            width: 100%;
+        }
+
+        /* Hamburger menu for mobile */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Main content */
+        .content {
+            position: relative;
+            height: 50vh;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            text-align: center;
+            padding-top: 80px;
+        }
+
+        .content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .content p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            line-height: 1.6;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Mobile Responsive */
+        @media screen and (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: rgba(0, 0, 0, 0.9);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                padding: 2rem 0;
+                gap: 0;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-item {
+                margin: 1rem 0;
+            }
+
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .content h1 {
+                font-size: 2rem;
+            }
+
+            .content p {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: translateY(9px) rotate(45deg);
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: translateY(-9px) rotate(-45deg);
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .content h1 {
+                font-size: 1.5rem;
+            }
+
+            .nav-logo {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Responsive Navbar -->
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="#" class="nav-logo">Vignesh</a>
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="#home">Home</a></li>
+            <li class="nav-item"><a href="#about">About</a></li>
+            <li class="nav-item"><a href="#projects">Projects</a></li>
+            <li class="nav-item"><a href="#skills">Skills</a></li>
+            <li class="nav-item"><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</nav>
+
+<!-- Background Animation -->
+<canvas id="bgCanvas"></canvas>
+
+<!-- Foreground Content -->
+<div class="content">
+    <div>
+        <h1>Hello, I'm Your Name</h1>
+        <p>I'm a Software Developer passionate about creating efficient, user-focused solutions with beautiful animations and responsive design.</p>
+    </div>
+    <div>
+        <img src="" alt="">
+    </div>
+</div>
+
+<script>
+const canvas = document.getElementById("bgCanvas");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let balls = [];
+
+// Color palette for the balls
+const colors = [
+    '#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#ffeaa7',
+    '#dda0dd', '#98d8c8', '#f7dc6f', '#bb8fce', '#85c1e9',
+    '#f8c471', '#82e0aa', '#f1948a', '#85929e', '#a9cce3'
+];
+
+// Create Ball Objects with different colors
+for (let i = 0; i < 35; i++) {
+    balls.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 8 + 3,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        dx: (Math.random() - 0.5) * 1.5,
+        dy: (Math.random() - 0.5) * 1.5,
+        opacity: Math.random() * 0.7 + 0.3
+    });
+}
+
+// Draw Balls
+function drawBalls() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    balls.forEach(ball => {
+        ctx.globalAlpha = ball.opacity;
+        ctx.beginPath();
+        ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
+        
+        // Create gradient for each ball
+        const gradient = ctx.createRadialGradient(ball.x, ball.y, 0, ball.x, ball.y, ball.radius);
+        gradient.addColorStop(0, ball.color);
+        gradient.addColorStop(1, ball.color + '40');
+        
+        ctx.fillStyle = gradient;
+        ctx.fill();
+        
+        // Add subtle glow effect
+        ctx.shadowColor = ball.color;
+        ctx.shadowBlur = 10;
+        ctx.fill();
+        ctx.shadowBlur = 0;
+
+        ball.x += ball.dx;
+        ball.y += ball.dy;
+
+        // Bounce from edges
+        if (ball.x + ball.radius > canvas.width || ball.x - ball.radius < 0) {
+            ball.dx *= -1;
+        }
+        if (ball.y + ball.radius > canvas.height || ball.y - ball.radius < 0) {
+            ball.dy *= -1;
+        }
+    });
+
+    ctx.globalAlpha = 1;
+    requestAnimationFrame(drawBalls);
+}
+
+drawBalls();
+
+// Adjust canvas on resize
+window.addEventListener("resize", () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
+
+// Mobile menu toggle
+const hamburger = document.querySelector('.hamburger');
+const navMenu = document.querySelector('.nav-menu');
+
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navMenu.classList.toggle('active');
+});
+
+// Close mobile menu when clicking on a link
+document.querySelectorAll('.nav-item a').forEach(link => {
+    link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+    });
+});
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+    }
+});
+</script>
+
+</body>
+</html>
