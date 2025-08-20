@@ -19,10 +19,10 @@
 
 <body>
 
-    <!-- Responsive Navbar -->
+  <!-- Responsive Navbar -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="#" class="nav-logo">Vignesh</a>
+            <a href="#home" class="nav-logo">Vignesh</a>
             <ul class="nav-menu">
                 <li class="nav-item"><a href="#home">Home</a></li>
                 <li class="nav-item"><a href="#about">About</a></li>
@@ -41,76 +41,254 @@
     <!-- Background Animation -->
     <canvas id="bgCanvas"></canvas>
 
-    <!-- Foreground Content -->
-    <section class="hero" id="hero">
+    <!-- Hero Section -->
+    <section class="hero" id="home">
         <div class="content">
             <div>
                 <h1>Hello, I'm <span>Vignesh</span></h1>
                 <div class="dynamic-text">
-                    <span class="dynamic-word" data-text="Frontend Developer"></span>
-                    <span class="dynamic-word" data-text="Continuous Learner"></span>
-                    <span class="dynamic-word" data-text="UI/UX Designer"></span>
+                    <span class="dynamic-word" data-text="Frontend Developer">Frontend Developer</span>
                     <span class="typing-cursor"></span>
                 </div>
-                <p>I'm a Software Developer passionate about creating efficient, user-focused solutions with beautiful
-                    animations and responsive design.</p>
+                <p>I'm a Software Developer passionate about creating efficient, user-focused solutions with beautiful animations and responsive design.</p>
                 <div class="social-links">
-                    <a href="https://www.linkedin.com/in/Vignesh061" class="social-link" aria-label="LinkedIn Profile"
-                        target="_blank">
+                    <a href="https://www.linkedin.com/in/Vignesh061" class="social-link" aria-label="LinkedIn Profile" target="_blank">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
-                    <a href="https://github.com/Vignesh061" class="social-link" aria-label="GitHub Profile"
-                        target="_blank">
+                    <a href="https://github.com/Vignesh061" class="social-link" aria-label="GitHub Profile" target="_blank">
                         <i class="fab fa-github"></i>
                     </a>
-                    <a href="https://www.hackerrank.com/profile/vignesh061" class="social-link"
-                        aria-label="HackerRank Profile" target="_blank">
+                    <a href="https://www.hackerrank.com/profile/vignesh061" class="social-link" aria-label="HackerRank Profile" target="_blank">
                         <i class="fab fa-hackerrank"></i>
                     </a>
                 </div>
                 <div class="hom-buttons">
-                    <button>View my work</button>
-                    <button>resume</button>
+                    <button onclick="scrollToSection('projects')">View my work</button>
+                    <button onclick="window.open('#', '_blank')">Resume</button>
                 </div>
             </div>
             <div class="profile-container">
                 <div class="orbit-circle"></div>
                 <div class="orbit-circle"></div>
                 <div class="orbit-circle"></div>
-                <img src="assets/images/myprofile.jpg" alt="profile">
+                <img src="assets/images/myprofile.jpg" alt="Profile Image">
             </div>
         </div>
-
-          <!-- About Sectio  -->
-    <section class="about-section " id="about">
-
-        <div class="about-img">
-            <img src="assets/images/about-img.jpg" alt="">
-        </div>
-        <div class="about-content">
-            <h1>My Journey</h1>
-            <p>I’m focusing on Python Full Stack Development while also exploring UI/UX design to create better digital
-                experiences. Every project I build helps me improve my problem-solving skills and pushes me closer to my
-                goal of becoming a skilled full stack developer."</p>
-
-            <br>
-            <br>
-            <p>"I’m a passionate software developer whose journey began with a curiosity to create and explore the
-                digital world. Starting with frontend development, I discovered my love for building clean and
-                responsive interfaces. Over time, I expanded into backend development, working on real-world projects
-                that strengthened my problem-solving skills. Today, I’m on the path to becoming a full-stack developer,
-                continuously learning and crafting impactful, user-focused solutions.</p>
-        </div>
-
     </section>
 
-
-
-        <!-- Script -->
-        <script src="script.js"></script>
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-grid">
+            <div class="about-img">
+                <img src="assets/images/about-img.jpg" alt="About Image">
+            </div>
+            <div class="about-content">
+                <h1>My Journey</h1>
+                <p>I'm focusing on Python Full Stack Development while also exploring UI/UX design to create better digital experiences. Every project I build helps me improve my problem-solving skills and pushes me closer to my goal of becoming a skilled full stack developer.</p>
+                
+                <p>I'm a passionate software developer whose journey began with a curiosity to create and explore the digital world. Starting with frontend development, I discovered my love for building clean and responsive interfaces. Over time, I expanded into backend development, working on real-world projects that strengthened my problem-solving skills. Today, I'm on the path to becoming a full-stack developer, continuously learning and crafting impactful, user-focused solutions.</p>
+            </div>
+        </div>
     </section>
 
+    <!-- Projects Section -->
+    <section class="projects-section" id="projects">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3>E-Commerce Platform</h3>
+                <p>A full-stack e-commerce solution built with modern web technologies. Features include user authentication, product catalog, shopping cart, and secure payment integration.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">Node.js</span>
+                    <span class="tech-tag">MongoDB</span>
+                    <span class="tech-tag">Express</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="project-btn">Live Demo</a>
+                    <a href="#" class="project-btn">GitHub</a>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <h3>Task Management App</h3>
+                <p>A responsive task management application with real-time updates, drag-and-drop functionality, and team collaboration features.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">Vue.js</span>
+                    <span class="tech-tag">Firebase</span>
+                    <span class="tech-tag">CSS3</span>
+                    <span class="tech-tag">JavaScript</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="project-btn">Live Demo</a>
+                    <a href="#" class="project-btn">GitHub</a>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <h3>Weather Dashboard</h3>
+                <p>An interactive weather dashboard with location-based forecasts, animated weather icons, and detailed meteorological data visualization.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Flask</span>
+                    <span class="tech-tag">API Integration</span>
+                    <span class="tech-tag">Chart.js</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="project-btn">Live Demo</a>
+                    <a href="#" class="project-btn">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Skills Section -->
+    <section class="skills-section" id="skills">
+        <h2 class="section-title">Skills & Technologies</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Frontend Development</h3>
+                <div class="skill-item">
+                    <span class="skill-name">HTML/CSS</span>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-skill="90" style="width: 90%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name">JavaScript</span>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-skill="85" style="width: 85%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name">React</span>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-skill="80" style="width: 80%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name">Vue.js</span>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-skill="75" style="width: 75%;"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <h3>Backend Development</h3>
+                <div class="skill-item">
+                    <span class="skill-name">Python</span>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-skill="88" style="width: 88%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name">Node.js</span>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-skill="82" style="width: 82%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name">Flask/Django</span>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-skill="78" style="width: 78%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name">MongoDB</span>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-skill="75" style="width: 75%;"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <h3>Design & Tools</h3>
+                <div class="skill-item">
+                    <span class="skill-name">UI/UX Design</span>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-skill="85" style="width: 85%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name">Git/GitHub</span>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-skill="90" style="width: 90%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name">Figma</span>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-skill="80" style="width: 80%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name">Responsive Design</span>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-skill="92" style="width: 92%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <h3>Let's Work Together</h3>
+                <p>I'm always interested in new opportunities and exciting projects. Whether you have a question or just want to say hi, I'll try my best to get back to you!</p>
+                
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>vignesh061@example.com</span>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+91 9876543210</span>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Coimbatore, Tamil Nadu, India</span>
+                </div>
+            </div>
+            
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Vignesh. All rights reserved. Built with passion and code.</p>
+    </footer>
+    <!-- Script -->
+    <script src="script.js"></script>
 </body>
 
 </html>
