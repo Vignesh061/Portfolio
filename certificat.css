@@ -1,0 +1,43 @@
+* {
+    padding: 0px;
+    margin: 0px;
+
+}
+
+body {
+    background: linear-gradient(135deg, #261345, #2d1950);
+    font-family: 'Poppins', sans-serif;
+}
+
+.heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:5rem 0 3rem;
+}
+
+.heading .title {
+    color: #ff6b6b;
+    font-size: 2.5rem;
+}
+
+.img-gallery {
+    /* max-width:1200px; */
+    justify-content: center;
+
+}
+
+.img-card {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.img-card img {
+    width: 400px;
+    height: fit-content;
+    padding: 20px;
+
+}
