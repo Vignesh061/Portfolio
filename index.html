@@ -108,64 +108,184 @@
     </section>
 
     <!-- Projects Section -->
-    <section class="projects-section" id="projects">
-        <h2 class="section-title"> Projects</h2>
+    <section class="projects-section animate" id="projects">
+        <h2 class="section-title">My Work</h2>
         <div class="projects-nav">
             <div class="nav-list">
-                <div class="pronav-btn"><a href="#projects">projects</a></div>
-                <div class="pronav-btn"><a href="">Certificats</a></div>
-                <div class="pronav-btn"><a href="#skills">Skills</a></div>
+                <div class="pronav-btn"><a href="#" onclick="showSection('projects', this)" class="active">Projects</a></div>
+                <div class="pronav-btn"><a href="#" onclick="showSection('certificates', this)">Certificates</a></div>
+                <div class="pronav-btn"><a href="#" onclick="showSection('skills', this)">Skills</a></div>
             </div>
         </div>
-        <div class="projects-grid">
-            <div class="project-card">
-                <h3>Guest house booking</h3>
-                <div class="thumbnail-img">
-                    <img src="assets/images/project-1.png" alt="project img">
+
+        <!-- Projects Content -->
+        <div id="projects-content" class="content-section active">
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Guest House Booking</h3>
+                    <div class="thumbnail-img">
+                        <img src="https://via.placeholder.com/300x200/2d1950/00d4ff?text=Guest+House" alt="Guest House Booking Project">
+                    </div>
+                    <div class="project-dis">
+                        <p>A web application for managing guest house reservations and customer details with real-time availability checking.</p>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-btn">Live Demo</a>
+                        <a href="#" class="project-btn">GitHub</a>
+                    </div>
                 </div>
-                <div class="project-dis">
-                    <p>A web application for managing guest house reservations and customer details</p>
+
+                <div class="project-card">
+                    <h3>Job Syncer</h3>
+                    <div class="thumbnail-img">
+                        <img src="https://via.placeholder.com/300x200/2d1950/4ecdc4?text=Job+Syncer" alt="Job Syncer Project">
+                    </div>
+                    <div class="project-dis">
+                        <p>A web application for matching resumes with job descriptions using AI algorithms and machine learning.</p>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-btn">Live Demo</a>
+                        <a href="#" class="project-btn">GitHub</a>
+                    </div>
                 </div>
-                <div class="project-links">
-                    <a href="#" class="project-btn">Live Demo</a>
-                    <a href="#" class="project-btn">GitHub</a>
+
+                <div class="project-card">
+                    <h3>Workout Builder</h3>
+                    <div class="thumbnail-img">
+                        <img src="https://via.placeholder.com/300x200/2d1950/ff6b6b?text=Workout+Builder" alt="Workout Builder Project">
+                    </div>
+                    <div class="project-dis">
+                        <p>A responsive web application for creating and managing personalized workout plans with progress tracking.</p>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-btn">Live Demo</a>
+                        <a href="#" class="project-btn">GitHub</a>
+                    </div>
                 </div>
             </div>
-
-            <div class="project-card">
-                <h3>job Syncer</h3>
-                <div class="thumbnail-img">
-                    <img src="assets/images/project-1.png" alt="project img">
-                </div>
-                <div class="project-dis">
-                    <p>
-                    A web application for matching resumes with job descriptions using AI.
-                    </p>
-                </div>
-                <div class="project-links">
-                    <a href="#" class="project-btn">Live Demo</a>
-                    <a href="#" class="project-btn">GitHub</a>
-                </div>
+            <div class="view-more">
+                <a href="#">View more &rarr;</a>
             </div>
+        </div>
 
-            <div class="project-card">
-                <h3>Workout Builder</h3>
-                <div class="thumbnail-img">
-                    <img src="assets/images/project-1.png" alt="project img">
-                </div>
-                <div class="project-dis">
-                    <p>
-                    A responsive web application for creating and managing personalized workout plans.
-                    </p>
-                </div>
-                <div class="project-links">
-                    <a href="#" class="project-btn">Live Demo</a>
-                    <a href="#" class="project-btn">GitHub</a>
+        <!-- Certificates Content -->
+        <div id="certificates-content" class="content-section">
+            <div class="certificates-shows">
+                <h1 class="title">Certificates</h1>
+            </div>
+            <div class="img-gallery">
+                <div class="img-card">
+                    <img src="assets/images/project-1.png" alt="Frontend Certificate">
+                    <img src="assets/images/project-1.png " alt="Backend Certificate">
+                    <img src="assets/images/project-1.png " alt="Database Certificate">
+                    <img src="assets/images/project-1.png " alt="JavaScript Certificate">
+                    <img src="assets/images/project-1.png " alt="React Certificate">
+                    <img src="assets/images/project-1.png " alt="Node.js Certificate">
                 </div>
             </div>
         </div>
-        <div class="view-more">
-            <a href="" type="submit">View more &rarr;</a>
+
+        <!-- Skills Content -->
+        <div id="skills-content" class="content-section">
+            <div class="skills-shows">
+                <h1 class="title">Skills</h1>
+            </div>
+            <div class="skills-container">
+                <div class="skills-grid">
+                    <!-- Frontend Skills -->
+                    <div class="skill-category">
+                        <h3>Frontend Development</h3>
+                        <div class="skills-icons">
+                            <div class="skill-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML" class="skill-icon">
+                                <span class="skill-name">HTML5</span>
+                            </div>
+                            <div class="skill-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS" class="skill-icon">
+                                <span class="skill-name">CSS3</span>
+                            </div>
+                            <div class="skill-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" class="skill-icon">
+                                <span class="skill-name">JavaScript</span>
+                            </div>
+                            <div class="skill-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" class="skill-icon">
+                                <span class="skill-name">React</span>
+                            </div>
+                            <div class="skill-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" alt="Bootstrap" class="skill-icon">
+                                <span class="skill-name">Bootstrap</span>
+                            </div>
+                            <div class="skill-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg" alt="Sass" class="skill-icon">
+                                <span class="skill-name">Sass</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Backend Skills -->
+                    <div class="skill-category">
+                        <h3>Backend Development</h3>
+                        <div class="skills-icons">
+                            <div class="skill-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" class="skill-icon">
+                                <span class="skill-name">Node.js</span>
+                            </div>
+                            <div class="skill-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="skill-icon">
+                                <span class="skill-name">Python</span>
+                            </div>
+                            <div class="skill-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" alt="Express" class="skill-icon">
+                                <span class="skill-name">Express</span>
+                            </div>
+                            <div class="skill-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" alt="Flask" class="skill-icon">
+                                <span class="skill-name">Flask</span>
+                            </div>
+                            <div class="skill-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP" class="skill-icon">
+                                <span class="skill-name">PHP</span>
+                            </div>
+                            <div class="skill-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" class="skill-icon">
+                                <span class="skill-name">Java</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Database Skills -->
+                    <div class="skill-category">
+                        <h3>Database & Tools</h3>
+                        <div class="skills-icons">
+                            <div class="skill-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" class="skill-icon">
+                                <span class="skill-name">MySQL</span>
+                            </div>
+                            <div class="skill-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" class="skill-icon">
+                                <span class="skill-name">MongoDB</span>
+                            </div>
+                            <div class="skill-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" class="skill-icon">
+                                <span class="skill-name">PostgreSQL</span>
+                            </div>
+                            <div class="skill-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" class="skill-icon">
+                                <span class="skill-name">Git</span>
+                            </div>
+                            <div class="skill-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" class="skill-icon">
+                                <span class="skill-name">Docker</span>
+                            </div>
+                            <div class="skill-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" alt="AWS" class="skill-icon">
+                                <span class="skill-name">AWS</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
