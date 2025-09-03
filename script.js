@@ -1,5 +1,4 @@
-
-        // Background Animation
+ // Background Animation
         const canvas = document.getElementById("bgCanvas");
         const ctx = canvas.getContext("2d");
 
@@ -178,7 +177,9 @@
         // Initialize the typing animation when the page loads
         document.addEventListener('DOMContentLoaded', () => {
             const dynamicText = document.querySelector('.dynamic-text');
-            new TypingAnimation(dynamicText);
+            if (dynamicText) {
+                new TypingAnimation(dynamicText);
+            }
         });
 
         // Scroll-triggered animations
@@ -191,44 +192,46 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('animate');
-                    
-                    // Animate skill bars
-                    if (entry.target.classList.contains('skills-section')) {
-                        animateSkillBars();
-                    }
                 }
             });
         }, observerOptions);
 
         // Observe sections for animations
-        document.querySelectorAll('.about-section, .projects-section, .skills-section, .contact-section').forEach(section => {
+        document.querySelectorAll('.about-section, .projects-section, .contact-section').forEach(section => {
             observer.observe(section);
         });
 
-        // Animate skill bars
-        function animateSkillBars() {
-            const skillBars = document.querySelectorAll('.skill-progress');
-            skillBars.forEach(bar => {
-                const skill = bar.getAttribute('data-skill');
-                setTimeout(() => {
-                    bar.style.width = skill + '%';
-                }, 300);
-            });
-        }
-
         // Smooth scrolling for navigation
         function scrollToSection(sectionId) {
-            document.getElementById(sectionId).scrollIntoView({
-                behavior: 'smooth'
-            });
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
         }
 
         // Add click handlers to navigation links
         document.querySelectorAll('.nav-item a').forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
-                const targetId = link.getAttribute('href').substring(1);
-                scrollToSection(targetId);
+                const href = link.getAttribute('href');
+                
+                // Handle skills navigation specially
+                if (href === '#skills-nav-link') {
+                    // First scroll to projects section
+                    scrollToSection('projects');
+                    // Then show skills tab after a small delay
+                    setTimeout(() => {
+                        const skillsNavLink = document.getElementById('skills-nav-link');
+                        if (skillsNavLink) {
+                            showSection('skills', skillsNavLink);
+                        }
+                    }, 500);
+                } else if (href.startsWith('#')) {
+                    const targetId = href.substring(1);
+                    scrollToSection(targetId);
+                }
             });
         });
 
@@ -262,11 +265,129 @@
             });
         });
 
-        // Parallax effect for hero section
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero');
-            if (hero) {
-                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+        // Function to show different sections in projects area
+        function showSection(sectionName, clickedElement) {
+            // Hide all content sections
+            const allSections = document.querySelectorAll('.content-section');
+            allSections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Remove active class from all nav links
+            const allNavLinks = document.querySelectorAll('.nav-list a');
+            allNavLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // Show the selected section
+            const targetSection = document.getElementById(sectionName + '-content');
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+
+            // Add active class to clicked nav link
+            if (clickedElement) {
+                clickedElement.classList.add('active');
+            }
+
+            // Trigger animations for project cards when projects section is shown
+            if (sectionName === 'projects') {
+                const projectCards = document.querySelectorAll('.project-card');
+                projectCards.forEach((card, index) => {
+                    card.style.animation = 'none';
+                    card.offsetHeight; // Trigger reflow
+                    card.style.animation = `fadeInUp 0.8s ease-out forwards`;
+                    card.style.animationDelay = `${index * 0.1}s`;
+                });
+            }
+
+            // Animate skill items when skills section is shown
+            if (sectionName === 'skills') {
+                const skillItems = document.querySelectorAll('.skill-item');
+                skillItems.forEach((item, index) => {
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        item.style.transition = 'all 0.3s ease';
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
+                    }, index * 50);
+                });
+            }
+
+            // Animate certificate images when certificates section is shown
+            if (sectionName === 'certificates') {
+                const certImages = document.querySelectorAll('.img-card img');
+                certImages.forEach((img, index) => {
+                    img.style.opacity = '0';
+                    img.style.transform = 'scale(0.8)';
+                    setTimeout(() => {
+                        img.style.transition = 'all 0.3s ease';
+                        img.style.opacity = '1';
+                        img.style.transform = 'scale(1)';
+                    }, index * 100);
+                });
+            }
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show projects section by default
+            const defaultProjectsLink = document.querySelector('.nav-list a');
+            if (defaultProjectsLink) {
+                showSection('projects', defaultProjectsLink);
+            }
+            
+            // Add scroll animation to the main section
+            const projectsSection = document.querySelector('.projects-section');
+            if (projectsSection) {
+                projectsSection.classList.add('animate');
+            }
+        });
+
+        // Add click effect to project cards
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                if (!e.target.closest('.project-btn')) {
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                }
+            });
+        });
+
+        // Add multiple typing words for more dynamic effect
+        document.addEventListener('DOMContentLoaded', () => {
+            const dynamicText = document.querySelector('.dynamic-text');
+            if (dynamicText) {
+                // Create multiple dynamic words
+                const words = [
+                    'UI/UX Enthusiast',
+                    'Frontend Developer', 
+                    'Aspiring Full Stack Developer',
+                    'Continuous learner'
+                ];
+                
+                // Clear existing content and add new words
+                dynamicText.innerHTML = '';
+                words.forEach((word, index) => {
+                    const wordSpan = document.createElement('span');
+                    wordSpan.className = 'dynamic-word';
+                    wordSpan.setAttribute('data-text', word);
+                    wordSpan.textContent = '';
+                    if (index !== 0) {
+                        wordSpan.style.display = 'none';
+                    }
+                    dynamicText.appendChild(wordSpan);
+                });
+                
+                // Add cursor
+                const cursor = document.createElement('span');
+                cursor.className = 'typing-cursor';
+                dynamicText.appendChild(cursor);
+                
+                // Initialize typing animation
+                new TypingAnimation(dynamicText);
             }
         });
