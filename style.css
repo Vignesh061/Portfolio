@@ -967,9 +967,20 @@
             color: #e0e0e0;
             margin: 0;
         }
+        
 
         .footer marquee {
-            margin-top: 1rem;
+            
+            margin-top: 2rem;
+        }
+        .morequee_content{
+            display: flex;
+            justify-content: space-around;
+            margin-top: 3rem;
+            
+        }
+        .morequee_content p{
+            color: #00d4ff;
         }
 
         /* Keyframe animations */
@@ -1234,6 +1245,7 @@
             .contact-content {
                 flex-direction: column;
                 gap: 2rem;
+                
             }
 
             .contact-info {
@@ -1242,7 +1254,10 @@
             }
 
             .contact-form {
-                min-width: auto;
+                width:90%;
+            }
+            .morequee_content{
+                gap: 2rem;
             }
         }
 
@@ -1354,13 +1369,13 @@
             }
 
             .orbit-circle:nth-child(2) {
-                width: 310px;
-                height: 310px;
+                width: 280px;
+                height: 280px;
             }
 
             .orbit-circle:nth-child(3) {
-                width: 350px;
-                height: 350px;
+                width: 310px;
+                height: 310px;
             }
 
             .nav-container {
