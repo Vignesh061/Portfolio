@@ -1,4 +1,4 @@
-// Background Animation
+ // Background Animation
         const canvas = document.getElementById("bgCanvas");
         const ctx = canvas.getContext("2d");
 
@@ -30,20 +30,20 @@
         // Draw Balls
         function drawBalls() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
+
             balls.forEach(ball => {
                 ctx.globalAlpha = ball.opacity;
                 ctx.beginPath();
                 ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
-                
+
                 // Create gradient for each ball
                 const gradient = ctx.createRadialGradient(ball.x, ball.y, 0, ball.x, ball.y, ball.radius);
                 gradient.addColorStop(0, ball.color);
                 gradient.addColorStop(1, ball.color + '40');
-                
+
                 ctx.fillStyle = gradient;
                 ctx.fill();
-                
+
                 // Add subtle glow effect
                 ctx.shadowColor = ball.color;
                 ctx.shadowBlur = 10;

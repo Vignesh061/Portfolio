@@ -67,8 +67,8 @@
                     </a>
                 </div>
                 <div class="hom-buttons">
-                    <button onclick="scrollToSection('projects')">View my work</button>
-                    <button onclick="window.open('#', '_blank')">Resume</button>
+                    <a href="#projects">View my work</a>
+                    <a href="assets/Vignesh_Resume.pdf" download="Vignesh_Resume.pdf">Download Resume</a>
                 </div>
             </div>
             <div class="profile-container">
@@ -123,24 +123,24 @@
                 <div class="project-card">
                     <h3>Guest House Booking</h3>
                     <div class="thumbnail-img">
-                        <img src="assets/images/project-1.png"
-                            alt="Guest House Booking Project">
+                        <img src="assets/project-images/project-1.png" alt="Guest House Booking Project">
                     </div>
                     <div class="project-dis">
                         <p>A web application for managing guest house reservations and customer details with real-time
                             availability checking.</p>
                     </div>
                     <div class="project-links">
-                        <a href="https://vignesh061.github.io/Guest-House-Booking-System-Html-CSS-JavaScript/" class="project-btn">Live Demo</a>
-                        <a href="https://github.com/Vignesh061/Guest-House-Booking-System-Html-CSS-JavaScript" class="project-btn">GitHub</a>
+                        <a href="https://vignesh061.github.io/Guest-House-Booking-System-Html-CSS-JavaScript/"
+                            class="project-btn">Live Demo</a>
+                        <a href="https://github.com/Vignesh061/Guest-House-Booking-System-Html-CSS-JavaScript"
+                            class="project-btn">GitHub</a>
                     </div>
                 </div>
 
                 <div class="project-card">
                     <h3>Job Syncer</h3>
                     <div class="thumbnail-img">
-                        <img src="assets/images/Project-2.png"
-                            alt="Job Syncer Project">
+                        <img src="assets/project-images/Project-2.png" alt="Job Syncer Project">
                     </div>
                     <div class="project-dis">
                         <p>A web application for matching resumes with job descriptions using AI algorithms and machine
@@ -155,27 +155,27 @@
                 <div class="project-card">
                     <h3>Image Gallery</h3>
                     <div class="thumbnail-img">
-                         <img src="assets/images/Project-3.png"
-                            alt="Workout Builder Project">
+                        <img src="assets/project-images/project-3.png" alt="Workout Builder Project">
                     </div>
                     <div class="project-dis">
-                        <p>GearSnap is a responsive image gallery web application designed for simplicity and creativity </p>
+                        <p>GearSnap is a responsive image gallery web application designed for simplicity and creativity
+                        </p>
                     </div>
-                    <div class="project-links"> 
+                    <div class="project-links">
                         <a href="https://vignesh061.github.io/Image-gallery-HTML-CSS/" class="project-btn">Live Demo</a>
                         <a href="https://github.com/Vignesh061/Image-gallery-HTML-CSS" class="project-btn">GitHub</a>
                     </div>
                 </div>
             </div>
             <div class="view-more">
-                <a href="project.html">View more &rarr;</a>
+                <a href="Project.html">View more &rarr;</a>
             </div>
         </div>
 
         <!-- Certificates Content -->
         <div id="certificates-content" class="content-section">
             <div class="certificates-shows">
-                <h1 class="title">Certificates</h1>
+                <!-- <h1 class="title">Certificates</h1> -->
             </div>
             <div class="img-gallery">
                 <div class="img-card">
@@ -196,7 +196,7 @@
         <!-- Skills Content -->
         <div id="skills-content" class="content-section">
             <div class="skills-shows">
-                <h1 class="title">Skills</h1>
+                <!-- <h1 class="title">Skills</h1> -->
             </div>
             <div class="skills-container">
                 <div class="skills-grid">
@@ -340,7 +340,9 @@
                 </div>
             </div>
 
-            <form class="contact-form">
+            <!-- <form action="https://formspree.io/f/xgvlblwy" method="POST" class="contact-form"> -->
+            <form action="https://formspree.io/f/xgvlblwy" method="POST" enctype="multipart/form-data"
+                class="contact-form">
                 <div class="form-group">
                     <label for="name">Full Name</label>
                     <input type="text" id="name" name="name" required>
@@ -370,18 +372,25 @@
     <footer class="footer">
         <p>&copy; 2024 Vignesh. All rights reserved. Built with passion and code.</p>
         <marquee direction="left" scrollamount="6" behavior="scroll">
-            <div class="morequee_content">
-
-                <div> <p>UI/UX Designer</p></div>
-                <div> <p>Frontend Developer</p></div>
-                <div> <p>Full-stack developer</p></div>
-                
+            <div class="marquee_content">
+                <div>
+                    <p>UI/UX Designer</p>
+                </div>
+                <div>
+                    <p>Frontend Developer</p>
+                </div>
+                <div>
+                    <p>Full-stack Developer</p>
+                </div>
+                <div>
+                    <p>Continuous Learner</p>
+                </div>
             </div>
         </marquee>
     </footer>
 
     <!-- Script  -->
-     <script src="script.js"></script>
+    <script src="script.js"></script>
 
 </body>
 
