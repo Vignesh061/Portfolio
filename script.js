@@ -15,13 +15,13 @@ const colors = [
 ];
 
 // Create Ball Objects with different colors
-for (let i = 0; i < 100; i++) {
+for (let i = 0; i < 70; i++) {
     balls.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        radius: Math.random() * 2 + 1,
+        radius: Math.random() * 3+1,
         color: colors[Math.floor(Math.random() * colors.length)],
-        dx: (Math.random() - 0.5) * 1.5,
+        dx: (Math.random() - 0.5) *1.5,
         dy: (Math.random() - 0.5) * 1.5,
         opacity: Math.random() * 0.7 + 0.3
     });
@@ -228,7 +228,23 @@ document.querySelectorAll('.nav-item a').forEach(link => {
                     showSection('skills', skillsNavLink);
                 }
             }, 500);
-        } else if (href.startsWith('#')) {
+        } 
+        else if (href.startsWith('#')) {
+            const targetId = href.substring(1);
+            scrollToSection(targetId);
+        }
+        // Handle projects navigation specially
+         if (href === '#projects-nav-link') {
+            scrollToSection('skills');
+            setTimeout(() => {
+                const projectsNavLink = document.getElementById('projects-nav-link');
+                if (projectsNavLink) {
+                    showSection('projects', projectsNavLink);
+                }
+            }, 500);
+        }
+        // Handle all other anchor links
+        else if (href.startsWith('#')) {
             const targetId = href.substring(1);
             scrollToSection(targetId);
         }
@@ -236,24 +252,53 @@ document.querySelectorAll('.nav-item a').forEach(link => {
 });
 
 // Form submission
-document.querySelector('.contact-form').addEventListener('submit', (e) => {
+document.querySelector('.contact-form').addEventListener('submit', async (e) => {
     e.preventDefault();
-
-    // Show success message
-    const submitBtn = document.querySelector('.submit-btn');
+    
+    const form = e.target;
+    const submitBtn = form.querySelector('.submit-btn');
     const originalText = submitBtn.textContent;
-
-    submitBtn.textContent = 'Message Sent!';
-    submitBtn.style.background = 'linear-gradient(92.7deg, #4CAF50 0%, #45a049 100%)';
-
-    // Reset form
-    setTimeout(() => {
-        submitBtn.textContent = originalText;
-        submitBtn.style.background = 'linear-gradient(92.7deg, rgb(51, 218, 252) 0%, rgb(140, 32, 150) 80%, rgb(230, 18, 249) 100%)';
-        document.querySelector('.contact-form').reset();
-    }, 3000);
+    
+    // Disable button and show loading state
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+    
+    try {
+        const response = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+        
+        if (response.ok) {
+            // Success
+            submitBtn.textContent = 'Message Sent!';
+            submitBtn.style.background = 'linear-gradient(92.7deg, #4CAF50 0%, #45a049 100%)';
+            form.reset();
+            
+            // Reset after 3 seconds
+            setTimeout(() => {
+                submitBtn.textContent = originalText;
+                submitBtn.style.background = 'linear-gradient(92.7deg, rgb(51, 218, 252) 0%, rgb(140, 32, 150) 80%, rgb(230, 18, 249) 100%)';
+                submitBtn.disabled = false;
+            }, 3000);
+        } else {
+            throw new Error('Form submission failed');
+        }
+    } catch (error) {
+        // Error
+        submitBtn.textContent = 'Error! Try again';
+        submitBtn.style.background = '#f44336';
+        submitBtn.disabled = false;
+        
+        setTimeout(() => {
+            submitBtn.textContent = originalText;
+            submitBtn.style.background = 'linear-gradient(92.7deg, rgb(51, 218, 252) 0%, rgb(140, 32, 150) 80%, rgb(230, 18, 249) 100%)';
+        }, 3000);
+    }
 });
-
 // Add some interactive effects to project cards
 document.querySelectorAll('.project-card').forEach(card => {
     card.addEventListener('mouseenter', () => {
