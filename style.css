@@ -976,40 +976,64 @@
      margin: 0;
  }
 
- marquee {
+ .marquee-container {
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 2rem;
+            padding: 15px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+        }
 
-     color: #fff;
-     font-size: 1.2rem;
-     font-weight: 600;
-     margin-top: 2rem;
-     padding: 15px 0;
-     border-radius: 12px;
-     /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); */
- }
+        .marquee-wrapper {
+            display: flex;
+            animation: scroll 30s linear infinite;
+            width: fit-content;
+        }
 
- .marquee_content {
-     display: flex;
-     gap: 9rem;
- }
+        .marquee-content {
+            display: flex;
+            gap: 9rem;
+        }
+        .marquee-content:first-child {
+            margin-right: 9rem;
+        }
+        
+        .marquee-content div {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            transition: transform 0.3s, background 0.3s;
+            white-space: nowrap;
+        }
 
- .marquee_content div {
-     display: inline-block;
-     padding: 8px 20px;
-     background: rgba(255, 255, 255, 0.1);
-     border-radius: 8px;
-     transition: transform 0.3s, background 0.3s;
- }
+        .marquee-content div:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
 
- .marquee_content div:hover {
-     background: rgba(255, 255, 255, 0.3);
-     transform: scale(1.1);
- }
+        .marquee-content p {
+            color: #00d4ff;
+            margin: 0;
+        }
 
- .marquee_content p {
-     color: #00d4ff;
-     margin: 0;
- }
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
 
+        /* Pause animation on hover (optional) */
+        .marquee-container:hover .marquee-wrapper {
+            animation-play-state: paused;
+        }    
  /* Keyframe animations */
  @keyframes slideInLeft {
      0% {

@@ -436,3 +436,13 @@ document.addEventListener('DOMContentLoaded', () => {
         new TypingAnimation(dynamicText);
     }
 });
+
+
+        // Get the marquee content
+        const marqueeContent = document.querySelector('.marquee-content');
+        const marqueeWrapper = document.querySelector('.marquee-wrapper');
+        
+        // Clone the content and append it to the wrapper (not parent)
+        const clone = marqueeContent.cloneNode(true);
+        marqueeWrapper.appendChild(clone);
+   
