@@ -61,8 +61,8 @@ h2 {
     width: 360px;
     justify-content: center;
     align-items: center;
-    animation: fadeInUp 0.8s ease-out forwards;
-    animation-delay: 0.3s;
+    animation: fadeInUp 1s ease-out forwards;
+    animation-delay: 0.5s;
 
 }
 
