@@ -174,13 +174,7 @@ class TypingAnimation {
     }
 }
 
-// Initialize the typing animation when the page loads
-document.addEventListener('DOMContentLoaded', () => {
-    const dynamicText = document.querySelector('.dynamic-text');
-    if (dynamicText) {
-        new TypingAnimation(dynamicText);
-    }
-});
+
 
 // Scroll-triggered animations
 const observerOptions = {
@@ -211,40 +205,33 @@ function scrollToSection(sectionId) {
     }
 }
 
-// Add click handlers to navigation links
-document.querySelectorAll('.nav-item a').forEach(link => {
+// Add click handlers to navigation links and hero buttons
+document.querySelectorAll('.nav-item a, .hom-buttons a[href^="#"]').forEach(link => {
     link.addEventListener('click', (e) => {
-        e.preventDefault();
         const href = link.getAttribute('href');
+        if (!href || !href.startsWith('#')) return;
 
-        // Handle skills navigation specially
+        e.preventDefault();
+
+        // Close mobile menu if active
+        if (typeof hamburger !== 'undefined' && typeof navMenu !== 'undefined') {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        }
+
         if (href === '#skills-nav-link') {
-            // First scroll to projects section
             scrollToSection('projects');
-            // Then show skills tab after a small delay
-            setTimeout(() => {
-                const skillsNavLink = document.getElementById('skills-nav-link');
-                if (skillsNavLink) {
-                    showSection('skills', skillsNavLink);
-                }
-            }, 500);
-        } 
-        else if (href.startsWith('#')) {
-            const targetId = href.substring(1);
-            scrollToSection(targetId);
-        }
-        // Handle projects navigation specially
-         if (href === '#projects-nav-link') {
-            scrollToSection('skills');
-            setTimeout(() => {
-                const projectsNavLink = document.getElementById('projects-nav-link');
-                if (projectsNavLink) {
-                    showSection('projects', projectsNavLink);
-                }
-            }, 500);
-        }
-        // Handle all other anchor links
-        else if (href.startsWith('#')) {
+            const skillsNavLink = document.getElementById('skills-nav-link');
+            if (skillsNavLink) {
+                showSection('skills', skillsNavLink);
+            }
+        } else if (href === '#projects-nav-link' || href === '#projects') {
+            scrollToSection('projects');
+            const projectsNavLink = document.getElementById('projects-nav-link');
+            if (projectsNavLink) {
+                showSection('projects', projectsNavLink);
+            }
+        } else {
             const targetId = href.substring(1);
             scrollToSection(targetId);
         }
@@ -442,7 +429,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const marqueeContent = document.querySelector('.marquee-content');
         const marqueeWrapper = document.querySelector('.marquee-wrapper');
         
-        // Clone the content and append it to the wrapper (not parent)
-        const clone = marqueeContent.cloneNode(true);
-        marqueeWrapper.appendChild(clone);
+        // Clone the content and append it to the wrapper if elements exist
+        if (marqueeContent && marqueeWrapper) {
+            const clone = marqueeContent.cloneNode(true);
+            marqueeWrapper.appendChild(clone);
+        }
    
